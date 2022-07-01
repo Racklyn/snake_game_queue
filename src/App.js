@@ -52,7 +52,16 @@ function App() {
 		setTimeout(()=>{
 			if(snake.currDir){
 				setIsGameStopped(false)
+				
+				//let willMove = true
+				// if (snake.lastDir) {
+				// 	const [lX, lY] = snake.directions[snake.lastDir]
+				// 	const [cX, cY] = snake.directions[snake.currDir]
+				// 	willMove = snake.lastDir && (lX - cX === 0 && lY - cY === 0)
+				// }
 				snake.move(snake.currDir)
+				
+
 				snakeFoodVerification()
 				
 				if (snake.hasLost()){
@@ -87,8 +96,8 @@ function App() {
 
 	function draw(){
 		drawingUtils.drawStage(contextRef.current, "#455")
-		food.draw(contextRef.current, side/nBlocks)
 		snake.draw(contextRef.current, side/nBlocks)
+		food.draw(contextRef.current, side/nBlocks)
 	}
 
 	function snakeFoodVerification(){
@@ -126,7 +135,16 @@ function App() {
 			<KeyboardEventHandler
 				handleKeys={['left', 'up', 'right', 'down']}
 				handleEventType="keydown"
-				onKeyEvent={(key) => {snake.currDir = key}}
+				onKeyEvent={(newDir) => {
+					let willChange = true
+					if (snake.currDir && snake.body.size > 1) {
+						const [cX, cY] = snake.directions[snake.currDir]
+						const [lX, lY] = snake.directions[newDir]
+						willChange = !(cX + lX === 0 && cY + lY === 0)
+					}
+
+					if (willChange) snake.currDir = newDir
+				}}
 			/>
 
 		</div>

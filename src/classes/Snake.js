@@ -15,7 +15,7 @@ export default class Snake{
     
     #aboutToGrow = false
 
-    #directions = {
+    directions = {
         up: [0, -1],
         down: [0, 1],
         left: [-1, 0],
@@ -24,9 +24,9 @@ export default class Snake{
 
     move(){
         
-        if(!(this.currDir in this.#directions)) return
+        if(!(this.currDir in this.directions)) return
 
-        const [changeX, changeY] = this.#directions[this.currDir]
+        const [changeX, changeY] = this.directions[this.currDir]
 
         if (this.#aboutToGrow){
             this.body.insert(this.head)
