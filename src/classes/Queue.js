@@ -2,12 +2,11 @@ export default class Queue{
     #list = []
 
     constructor() {
-        this.size = 0
-        
+        this.size = 0     
     }
 
     isEmpty() {
-        return this.size == 0
+        return this.size === 0
     }
 
     insert(newPoints){
@@ -16,9 +15,16 @@ export default class Queue{
     }
 
     remove(){
-        if (!this.isEmpty){
+        if (!this.isEmpty()){
             this.size--
             return this.#list.shift()
         }
     }
+
+    copy(){
+        let q = new Queue()
+        this.#list.forEach(c=>q.insert(c))
+        return q
+    }
+
 }

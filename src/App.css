@@ -1,5 +1,38 @@
+body{
+  background: #FFF;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Panel {
+  background: #222;
+  width: 750px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  box-shadow: 3px 3px 3px #0005;
+}
+.Panel div {
+  display: flex;
+  align-items: center;
+}
+.Panel span {
+  font-weight: bold;
+  color: #EEE;
+}
+.Panel p {
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #F00;
+}
+
+.Score {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 canvas{
